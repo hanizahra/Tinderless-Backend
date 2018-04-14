@@ -1,27 +1,32 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS profiles;
 DROP TABLE IF EXISTS active_at_location;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS matches;
+DROP TABLE IF EXISTS users;
 
-
+-- user handing singup signin
+-- user has only one profile
+-- creaing user is POST
+-- updating info of user s PUT
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT,
     email TEXT,
-    date_created TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
-CREATE TABLE profiles (
-    id SERIAL PRIMARY KEY,
+    -- hash TEXT,
+    date_created TIMESTAMP NOT NULL DEFAULT NOW(),
     gender TEXT,
     age INTEGER,
     gender_seeking TEXT,
     age_seeking TEXT,
-    age TEXT,
     photo TEXT,
-    profile_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
-    date_created TIMESTAMP NOT NULL DEFAULT NOW()
+    profile_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE locations (
+  id SERIAL PRIMARY KEY,
+  latitude INTEGER,
+  longitude INTEGER,
+  placeId INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
+  date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE active_at_location (
@@ -31,15 +36,6 @@ CREATE TABLE active_at_location (
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE locations (
-  id SERIAL PRIMARY KEY,
-  latitude INTEGER,
-  longitude INTEGER,
-  placeId INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
-  comment TEXT,
-  pet_id INTEGER REFERENCES animals ON DELETE CASCADE ON UPDATE CASCADE,
-  date_created TIMESTAMP NOT NULL DEFAULT NOW()
-);
 
 CREATE TABLE matches (
   id SERIAL PRIMARY KEY,
