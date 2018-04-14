@@ -1,7 +1,6 @@
-const router = require('express').Router()
-const viewsController = require('../controllers/views-controller')
-const DatingAppController = require('../controllers/DatingApp-controller')
+const router = require('express').Router();
+const usersController = require('../controllers/usersController');
 
+router.post('/', usersController.create);
 
-
-module.exports = router
+module.exports = router;

@@ -11,6 +11,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT,
     email TEXT,
+    password TEXT,
     -- hash TEXT,
     date_created TIMESTAMP NOT NULL DEFAULT NOW(),
     gender TEXT,
