@@ -10,7 +10,8 @@
     "morgan": "^1.9.0",
     "mvc-setup": "^1.1.0",
     "nodemon": "^1.17.3",
-    "pg-promise": "^8.2.3"
+    "pg-promise": "^8.2.3",
+    "react-native-image-crop-picker": "^0.20.1"
   },
   "devDependencies": {},
   "scripts": {
