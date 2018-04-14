@@ -9,17 +9,17 @@ DROP TABLE IF EXISTS users;
 -- updating info of user s PUT
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    username TEXT,
     email TEXT,
+    username TEXT,
     password TEXT,
     -- hash TEXT,
-    date_created TIMESTAMP NOT NULL DEFAULT NOW(),
     gender TEXT,
     age INTEGER,
     gender_seeking TEXT,
     age_seeking TEXT,
     photo TEXT,
-    profile_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE
+    profile_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
+    date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE locations (

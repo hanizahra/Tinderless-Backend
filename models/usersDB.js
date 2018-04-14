@@ -6,8 +6,9 @@ module.exports = {
     return db.one(`
       INSERT INTO users
       (
-      username,
       email,
+      username,
+      password,
       gender,
       age,
       gender_seeking,
@@ -17,8 +18,9 @@ module.exports = {
       )
       VALUES
       (
-      $/username/,
       $/email/,
+      $/username/,
+      $/password/,
       $/gender/,
       $/age/,
       $/gender_seeking/,

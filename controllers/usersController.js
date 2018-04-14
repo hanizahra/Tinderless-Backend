@@ -1,4 +1,5 @@
 const usersDB = require('../models/usersDB');
+console.log('controller is running')
 module.exports = {
 
   create(req,res,next) {
