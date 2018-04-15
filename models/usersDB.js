@@ -12,9 +12,7 @@ module.exports = {
       gender,
       age,
       gender_seeking,
-      age_seeking,
-      photo,
-      profile_id,
+      age_seeking
       )
       VALUES
       (
@@ -24,9 +22,7 @@ module.exports = {
       $/gender/,
       $/age/,
       $/gender_seeking/,
-      $/age_seeking/,
-      $/photo/,
-      $/profile_id/
+      $/age_seeking/
       )
       RETURNING *`,
       user
@@ -34,4 +30,5 @@ module.exports = {
   }
 
 }
+
 

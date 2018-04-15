@@ -1,15 +1,15 @@
-const usersDB = require('../models/usersDB');
+const photosDB = require('../models/photosDB');
 console.log('controller is running')
 module.exports = {
 
-  create(req,res,next) {
+  createPhoto(req,res,next) {
     console.log('this is req body', req.body)
-    usersDB.create(req.body)
-      .then((user) => {
-        res.locals.justAdded = user
+    photosDB.create(req.body)
+      .then((photo) => {
+        res.locals.justAdded = photo
         res.json({
-          message: 'user has been added',
-          userData: res.locals.justAdded
+          message: 'photo has been added',
+          photoData: res.locals.justAdded
         })
       })
       .catch(err => {

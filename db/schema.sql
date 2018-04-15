@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS active_at_location;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS matches;
+DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS users;
 
 -- user handing singup signin
@@ -14,11 +15,9 @@ CREATE TABLE users (
     password TEXT,
     -- hash TEXT,
     gender TEXT,
-    age INTEGER,
+    age TEXT,
     gender_seeking TEXT,
     age_seeking TEXT,
-    photo TEXT,
-    profile_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -28,6 +27,12 @@ CREATE TABLE locations (
   longitude INTEGER,
   placeId INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE photos (
+    id SERIAL PRIMARY KEY,
+    photo TEXT,
+    date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE active_at_location (
