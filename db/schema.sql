@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS active_at_location;
-DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS matches;
+DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS users;
 
@@ -23,9 +23,10 @@ CREATE TABLE users (
 
 CREATE TABLE locations (
   id SERIAL PRIMARY KEY,
-  latitude INTEGER,
-  longitude INTEGER,
-  placeId INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
+  name TEXT,
+  formatted_address TEXT,
+  place_id TEXT,
+  url TEXT,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
