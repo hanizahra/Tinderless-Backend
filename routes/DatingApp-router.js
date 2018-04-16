@@ -8,6 +8,8 @@ router.post('/', usersController.create);
 router.post('/location', locationsController.create);
 router.post('/addphoto', photosController.createPhoto);
 router.get('/:id', usersController.showOne);
-router.put('/:id', usersController.updateUser);
+router.get('/addphoto/:id', photosController.showOne);
+router.post('/login', usersController.login);
+router.patch('/:id', usersController.updateUser);
 
 module.exports = router;

@@ -42,6 +42,21 @@ module.exports = {
         next(err)
       })
     console.log('req.body of updated form',req.body)
+  },
+
+  login(req, res, next) {
+    usersDB.login(req.body)
+    .then((user) => {
+      res.locals.userLogin = user
+      res.json({
+        message: 'user is logging in',
+        user: res.locals.userLogin
+      })
+    })
+    .catch(err => {
+      next(err)
+    })
+    console.log('logging in with credentials: ', req.body);
   }
 
 }

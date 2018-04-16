@@ -18,6 +18,7 @@ CREATE TABLE users (
     age TEXT,
     gender_seeking TEXT,
     age_seeking TEXT,
+    location_id TEXT,
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -32,6 +33,7 @@ CREATE TABLE locations (
 
 CREATE TABLE photos (
     id SERIAL PRIMARY KEY,
+    user_id INTEGER,
     photo TEXT,
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );

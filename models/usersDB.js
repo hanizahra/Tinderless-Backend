@@ -38,12 +38,21 @@ module.exports = {
       },
 
       update(user) {
-      return db.one(`
-            UPDATE users
-            SET user = $/user/
-            WHERE id = $/id/
-            RETURNING *`,
-            user
+            return db.one(`
+                  UPDATE users
+                  SET user = $/user/
+                  WHERE id = $/id/
+                  RETURNING *`,
+                  user
+            );
+      },
+
+      login(user) {
+            return db.one(`
+                  SELECT *
+                  FROM users
+                  WHERE username = $1 and password = $2`,
+                  [user.username, user.password]
             );
       }
 
