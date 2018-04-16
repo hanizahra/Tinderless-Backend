@@ -26,7 +26,39 @@ module.exports = {
                   )
                   RETURNING *`,
                   user
+
             );
+      },
+
+      updateLocation(location) {
+            return db.none(`
+                  UPDATE users
+                  SET location_name = $1,
+                  formatted_address = $2,
+                  place_id = $3,
+                  location_url = $4
+                  WHERE id = $5`,
+                  [
+                        location.location_name,
+                        location.formatted_address,
+                        location.place_id,
+                        location.location_url,
+                        location.userId,
+                  ]
+            );
+      },
+
+      getNearbyPeople(userId)
+      {
+            return db.one(`select place_id from users where id = $1`, [userId.userId])
+            .then(data =>
+            {
+                  console.log('userDB.getNearbyPeople - data: ', data);
+                  return db.many(`
+                        SELECT *
+                        FROM  users where place_id = $1`,
+                        data.place_id)
+            });
       },
 
       showOne(id) {

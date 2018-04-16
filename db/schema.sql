@@ -1,8 +1,7 @@
-DROP TABLE IF EXISTS active_at_location;
 DROP TABLE IF EXISTS matches;
-DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS users;
+
 
 -- user handing singup signin
 -- user has only one profile
@@ -18,18 +17,13 @@ CREATE TABLE users (
     age TEXT,
     gender_seeking TEXT,
     age_seeking TEXT,
-    location_id TEXT,
+    location_name TEXT,
+    formatted_address TEXT,
+    place_id TEXT,
+    location_url TEXT,
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE locations (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  formatted_address TEXT,
-  place_id TEXT,
-  url TEXT,
-  date_created TIMESTAMP NOT NULL DEFAULT NOW()
-);
 
 CREATE TABLE photos (
     id SERIAL PRIMARY KEY,
@@ -38,16 +32,13 @@ CREATE TABLE photos (
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE active_at_location (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
-    place_id INTEGER REFERENCES locations ON DELETE CASCADE ON UPDATE CASCADE,
-    date_created TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
-
 CREATE TABLE matches (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users ON DELETE CASCADE ON UPDATE CASCADE,
+  swiper_user_id INTEGER,
+  person_they_swiped_yes_on_user_id INTEGER,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+--1,2
+--2,1
+

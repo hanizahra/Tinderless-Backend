@@ -57,6 +57,31 @@ module.exports = {
       next(err)
     })
     console.log('logging in with credentials: ', req.body);
+  },
+
+  updateLocation(req, res, next) {
+    //console.log('updateLocation:', req.body);
+    usersDB.updateLocation(req.body)
+    .then((location) => {
+      //res.locals.location = location
+      res.json({
+        message: 'user location has been updated',
+        //location: res.locals.location
+      })
+      //console.log('updating user location: ', req.body);
+    })
+  },
+
+  getNearbyPeople(req, res, next) {
+    console.log('getNearbyPeople --> ', req.body);
+     usersDB.getNearbyPeople(req.body)
+    .then((users) => {
+      //res.locals.location = users
+      res.json({
+        message: 'getNearbyPeople',
+        nearbyPeople: users
+      })
+    })
   }
 
 }

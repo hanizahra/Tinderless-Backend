@@ -5,11 +5,12 @@ const locationsController = require('../controllers/locationsController');
 
 console.log('router is running ')
 router.post('/', usersController.create);
-router.post('/location', locationsController.create);
+router.post('/updateLocation', usersController.updateLocation);
 router.post('/addphoto', photosController.createPhoto);
 router.get('/:id', usersController.showOne);
 router.get('/addphoto/:id', photosController.showOne);
 router.post('/login', usersController.login);
 router.patch('/:id', usersController.updateUser);
+router.post('/getNearbyPeople', usersController.getNearbyPeople);
 
 module.exports = router;
