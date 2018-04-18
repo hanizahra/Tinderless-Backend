@@ -50,13 +50,19 @@ module.exports = {
 
       getNearbyPeople(userId)
       {
-            return db.one(`select place_id from users where id = $1`, [userId.userId])
+            return db.one(`select
+                  place_id from users
+                  where id = $1`, [userId.userId])
             .then(data =>
             {
                   console.log('userDB.getNearbyPeople - data: ', data);
                   return db.many(`
                         SELECT *
-                        FROM  users where place_id = $1`,
+                        FROM  users
+                        JOIN photos
+                        ON
+                        users.id = photos.user_id
+                        where place_id = $1`,
                         data.place_id)
             });
       },

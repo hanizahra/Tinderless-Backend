@@ -1,6 +1,9 @@
+\c datingapp
+
 DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS likes;
 
 
 -- user handing singup signin
@@ -32,11 +35,17 @@ CREATE TABLE photos (
     date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE matches (
+CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
   swiper_user_id INTEGER,
   person_they_swiped_yes_on_user_id INTEGER,
   date_created TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE matches (
+  id SERIAL PRIMARY KEY,
+  user_one INTEGER,
+  user_two INTEGER
 );
 
 --1,2
